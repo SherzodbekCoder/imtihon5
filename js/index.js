@@ -35,7 +35,7 @@ darkMode.addEventListener('click', function (e) {
 function createCard(country) {
     return `
     <div slug="${country.name.slug}" id="card" class="card" style="border: none; border-radius: 5px; width: 264px; height: 336px; ">
-    <img style="width: 264px;margin-bottom: 20px; height: 164px;" src="${country.flags.png}" alt="">            
+    <img style="width: 264px; margin-bottom: 20px; height: 164px; border-radius: 2px;" src="${country.flags.png}" alt="">            
     <h3>${country.name.common}</h3>
     <p class="p"><span>Population:</span> ${country.population}</p>
     <p> <span>Region:</span> ${country.region}</p>
@@ -53,7 +53,33 @@ region.addEventListener('change', function () {
                     data.data.forEach(el => {
                         let card = createCard(el);
                         wrapper.innerHTML += card;
-                    })
+                        const cardd = document.querySelectorAll('#card')
+                        cardd.forEach(res => {
+                            res.addEventListener('click', function (e) {
+                                e.preventDefault();
+                                let slug = this.getAttribute('slug')
+                                fetch(`${BASE_URL}/countries/${slug}`, {
+                                    method: "GET"
+                                })
+                                    .then(res => {
+                                        if (res.ok) {
+                                            return res.json()
+                                        }
+                                    })
+                                    .then(data => {
+                                        let oneCount = createNewCrad(data)
+                                        wrapper.innerHTML = oneCount;
+                                        const back = document.getElementById('back')
+                                        back && back.addEventListener('click', function () {
+                                            window.location.reload()
+                                        })
+                                    })
+                                    .catch(err => {
+                                        console.log(err);
+                                    })
+                            })
+                        })
+                    });
                 }
             })
             .catch(err => {
@@ -81,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 data.addEventListener('click', function (e) {
                     e.preventDefault();
                     let slug = this.getAttribute('slug');
-                    fetch(`${BASE_URL}/countries/${slug}`,{
+                    fetch(`${BASE_URL}/countries/${slug}`, {
                         method: "GET"
                     })
                         .then(res => {
@@ -100,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         .catch(err => {
                             console.log(err);
                         })
-                    
+
                     // let OneCard = createNewCrad(data)
                     // wrapper.innerHTML = OneCard
                 })
@@ -121,7 +147,35 @@ function updateValue(e) {
             result.data.forEach(data => {
                 let card = createCard(data);
                 wrapper.innerHTML += card;
+                const cardd = document.querySelectorAll('#card')
+                cardd.forEach(res => {
+                    res.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        let slug = this.getAttribute('slug')
+                        fetch(`${BASE_URL}/countries/${slug}`, {
+                            method: "GET"
+                        })
+                            .then(res => {
+                                if (res.ok) {
+                                    return res.json()
+                                }
+                            })
+                            .then(data => {
+                                let oneCount = createNewCrad(data)
+                                wrapper.innerHTML = oneCount;
+                                const back = document.getElementById('back')
+                                back && back.addEventListener('click', function () {
+                                    window.location.reload()
+                                })
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
+                    })
+                })
             });
+
+
         })
         .catch(err => {
             console.log(err);
