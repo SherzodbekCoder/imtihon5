@@ -5,41 +5,40 @@ const BASE_URL = "https://frontend-mentor-apis-6efy.onrender.com";
 
 
 // // DArk MOde
-const darkMode = document.querySelector('#btn')
-const body = document.body
-const navFixed = document.getElementById('nav-fixed')
-const title = document.getElementById('title')
-const search = document.getElementById('search__input')
-const container = document.getElementById('container')
-const containerr = document.querySelector('.container')
-const faSolid = document.querySelector('.fa-solid')
-let isDarkMode = true;
+const darkMode = document.querySelector('#btn');
+const body = document.body;
+const navFixed = document.getElementById('nav-fixed');
+const title = document.getElementById('title');
+const search = document.getElementById('search__input');
+const container = document.getElementById('container');
+const containerr = document.querySelector('.container');
+const faSolid = document.querySelector('.fa-solid');
+
+let isDarkMode = false;
 
 darkMode.addEventListener('click', function (e) {
     e.preventDefault();
-    if (isDarkMode) {
+    if (!isDarkMode) {
         body.style.backgroundColor = 'rgba(43, 56, 68, 1)';
-         navFixed.style.backgroundColor = 'rgba(43, 56, 68, 1)';
-         title.style.color = 'white';
-         search.style.color = 'white';
-         container.style.backgroundColor = 'rgba(32, 44, 54, 1)';
-         containerr.style.backgroundColor = 'rgba(32, 44, 54, 1)';
-         faSolid.style.color = 'white';
-         wrapper.style.backgroundColor = 'rgba(32, 44, 54, 1)'
-         isDarkMode = false
-    }else{
-        body.style.backgroundColor = 'white';
+        navFixed.style.backgroundColor = 'rgba(43, 56, 68, 1)';
+        title.style.color = 'white';
+        search.style.color = 'white';
+        container.style.backgroundColor = 'rgba(32, 44, 54, 1)';
+        containerr.style.backgroundColor = 'rgba(32, 44, 54, 1)';
+        faSolid.style.color = 'white';
+        wrapper.style.backgroundColor = 'rgba(32, 44, 54, 1)';
+        isDarkMode = true;
+    } else {
+        body.style.backgroundColor = '#F2F2F2';
         navFixed.style.backgroundColor = 'white';
         title.style.color = 'black';
         search.style.color = 'black';
         container.style.backgroundColor = 'white';
         containerr.style.backgroundColor = 'white';
-        faSolid.style.color = 'white';
-        wrapper.style.backgroundColor = 'white'
-        isDarkMode = false
+        faSolid.style.color = 'black';
+        wrapper.style.backgroundColor = 'white';
+        isDarkMode = false;
     }
-
-
 });
 
 function createCard(country) {
@@ -136,9 +135,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         .catch(err => {
                             console.log(err);
                         })
-
-                    // let OneCard = createNewCrad(data)
-                    // wrapper.innerHTML = OneCard
                 })
             })
         })
@@ -191,8 +187,3 @@ function updateValue(e) {
             console.log(err);
         });
 };
-
-
-
-
-
