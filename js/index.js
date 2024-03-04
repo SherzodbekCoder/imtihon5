@@ -1,35 +1,45 @@
 import { createNewCrad } from "./function.js";
 const region = document.getElementById('select__region');
-const search = document.getElementById('search__input');
 const wrapper = document.getElementById('wrapper')
 const BASE_URL = "https://frontend-mentor-apis-6efy.onrender.com";
 
 
 // // DArk MOde
 const darkMode = document.querySelector('#btn')
-const title = document.getElementById('title')
-const navFixed = document.getElementById('nav-fixed')
 const body = document.body
+const navFixed = document.getElementById('nav-fixed')
+const title = document.getElementById('title')
+const search = document.getElementById('search__input')
+const container = document.getElementById('container')
+const containerr = document.querySelector('.container')
 const faSolid = document.querySelector('.fa-solid')
-let isDarkMode = false;
+let isDarkMode = true;
+
 darkMode.addEventListener('click', function (e) {
     e.preventDefault();
-
     if (isDarkMode) {
+        body.style.backgroundColor = 'rgba(43, 56, 68, 1)';
+         navFixed.style.backgroundColor = 'rgba(43, 56, 68, 1)';
+         title.style.color = 'white';
+         search.style.color = 'white';
+         container.style.backgroundColor = 'rgba(32, 44, 54, 1)';
+         containerr.style.backgroundColor = 'rgba(32, 44, 54, 1)';
+         faSolid.style.color = 'white';
+         wrapper.style.backgroundColor = 'rgba(32, 44, 54, 1)'
+         isDarkMode = false
+    }else{
         body.style.backgroundColor = 'white';
-        navFixed.style.backgroundColor = '#F2F2F2';
+        navFixed.style.backgroundColor = 'white';
         title.style.color = 'black';
         search.style.color = 'black';
-        faSolid.style.color = 'black';
-    } else {
-
-        body.style.backgroundColor = 'rgba(32, 44, 54, 1)';
-        navFixed.style.backgroundColor = '#2B3844';
-        title.style.color = 'white';
-        search.style.color = 'white';
+        container.style.backgroundColor = 'white';
+        containerr.style.backgroundColor = 'white';
         faSolid.style.color = 'white';
+        wrapper.style.backgroundColor = 'white'
+        isDarkMode = false
     }
-    isDarkMode = !isDarkMode;
+
+
 });
 
 function createCard(country) {
