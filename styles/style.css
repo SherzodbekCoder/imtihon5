@@ -89,11 +89,13 @@ a {
     border: none;
     outline: none;
     background-color: transparent;
+    
 
 }
 
 #searchDiv .fa-solid {
     font-size: 15px;
+    
 }
 
 #select__region {

@@ -59,6 +59,7 @@ region.addEventListener('change', function () {
             .then(data => {
                 if (data.data.length) {
                     wrapper.innerHTML = ''
+
                     data.data.forEach(el => {
                         let card = createCard(el);
                         wrapper.innerHTML += card;
@@ -119,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     fetch(`${BASE_URL}/countries/${slug}`, {
                         method: "GET"
                     })
-                        .then(res => {
+                    .then(res => {cfds
                             return res.json()
                         })
                         .then(data => {
